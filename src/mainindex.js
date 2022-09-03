@@ -45,9 +45,12 @@ onSnapshot(q, (snapshot) => {
       msgs.push({ ...doc.data(), id: doc.id })
       let usName = doc.data().username
       let text = doc.data().msgText
+      let time =  new Date(doc.data().createdAt.seconds*1000) 
+      time = time.toLocaleString();
+      console.log(time)
        const message = `<li class=${
          userInitials == usName ? "sent" : "receive"
-       }><span>${usName}: </span>${text}</li>`;
+       }><span>${usName } : </span>${text} <br><br>${time}</li>`;
        // append the message on the page
        innerT += message
       
